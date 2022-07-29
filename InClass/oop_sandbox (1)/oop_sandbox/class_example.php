@@ -17,3 +17,5 @@ foreach($class_names as $class_name) {
 }
 
 ?>
+
+<h1>Just checking</h1>
