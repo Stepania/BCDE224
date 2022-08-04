@@ -10,7 +10,7 @@ class Student {
 
 $student1 = new Student;
 $student1->first_name = 'Lucy';
-$student1->last_name = 'Ricardo';
+$student1->last_name = 'Ricardossik';
 
 $student2 = new Student;
 $student2->first_name = 'Ethel';
