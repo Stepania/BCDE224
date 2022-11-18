@@ -1,0 +1,46 @@
+USE agoraweb;
+-- shhow product
+DROP PROCEDURE IF EXISTS sp_showProduct;
+DELIMITER //
+CREATE PROCEDURE sp_showProduct(IN id INT)
+BEGIN
+	SELECT productID, productName,  productDescription, 
+         productPicture, price, listingDate, sellerID, 
+        CONCAT(firstName, ' ', lastName) AS sellerName, companyLogo
+	FROM product p
+	INNER  JOIN agoraUser au on au.userID=p.sellerID
+    INNER JOIN business b on b.businessID=au.businessID
+	WHERE productID = id;
+END;
+//
+-- call sp_showProduct(5);
+-- CALL sp_showAllProducts();
+-- select * from product;
+-- show listing querie/procedure
+DROP PROCEDURE IF EXISTS sp_showAllProducts;
+DELIMITER //
+CREATE PROCEDURE sp_showAllProducts()
+BEGIN
+	SELECT productID, productName,  productDescription, 
+         productPicture, price, listingDate, sellerID,
+        CONCAT(firstName, ' ', lastName) AS sellerName
+	FROM product p
+	INNER  JOIN agoraUser au on au.userID=p.sellerID;
+END;
+//
+-- check password and login
+DROP PROCEDURE IF EXISTS sp_login;
+DELIMITER //
+CREATE PROCEDURE sp_login(IN theUsername VARCHAR(50))
+BEGIN
+	SELECT userPassword
+	FROM agorauser where username = theUsername;
+END;
+//
+-- testing
+-- call sp_login('toolPro');
+-- select* from agorauser;
+
+-- need to create view for products!
+
+

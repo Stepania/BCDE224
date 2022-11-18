@@ -1,0 +1,375 @@
+/* RESET */
+
+html,
+body,
+div,
+span,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+ul,
+ol,
+li,
+dl,
+dt,
+dd,
+img,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+a,
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+main,
+menu,
+nav,
+section {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/* END OF RESET */
+
+/* LAYOUT */
+
+/* Flexboxes */
+
+header {
+  display: flex;
+  justify-content: space-between;
+
+  /* Vertically centre the two flex items - note the vertical alignment of 
+       the header text. */
+  align-items: center;
+}
+
+header > img {
+  width: 4rem;
+}
+
+/* Margins and padding */
+
+nav,
+main,
+aside,
+footer {
+  padding: 1em;
+}
+
+header > p {
+  margin-right: 1em;
+}
+
+aside div {
+  margin-bottom: 2em;
+  padding: 2em;
+}
+
+/* TYPOGRAPHY */
+
+body {
+  font-family: Arial, sans-serif;
+  line-height: 1.5;
+}
+
+h1,
+h2,
+h3 {
+  font-family: Georgia, "Times New Roman", serif;
+  font-weight: bold;
+}
+
+h1 {
+  font-size: 2rem;
+}
+
+h2 {
+  font-size: 1.5rem;
+}
+
+p {
+  margin-bottom: 1em;
+}
+main {
+  margin-bottom: 4em;
+}
+
+header > p {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 1.5rem;
+  text-align: right;
+  margin-bottom: 0;
+}
+
+aside {
+  text-align: center;
+}
+
+aside p {
+  font-size: 0.8rem;
+  margin-bottom: 1.5em;
+}
+
+.instrument-name {
+  font-style: italic;
+}
+
+/* COLOUR SCHEME & BORDERS */
+
+body {
+  color: #444;
+}
+
+header {
+  background-color: #000;
+  color: #fff;
+}
+
+aside > div {
+  background-color: #e0e0e0;
+
+  /* Investigate borders a bit more... */
+  border: 1px solid #888;
+  border-radius: 0.5em;
+}
+
+nav,
+footer {
+  background-color: #444;
+}
+
+header a {
+  color: #fff;
+}
+footer {
+  color: aqua;
+}
+
+.footer {
+  display: flex;
+  justify-content: center;
+}
+.buyer_product_card,
+.user_card {
+  display: inline;
+  justify-content: space-between;
+  margin-bottom: 3em;
+  margin-left: 2em;
+}
+nav {
+  display: block;
+  margin-left: auto;
+
+  width: 40%;
+  width: 25em;
+  background-color: white;
+}
+.buyer_product_card > div {
+  margin: 0.5em;
+}
+.user_card > div {
+  margin: 0.5em;
+}
+.buyer_profile {
+  margin-top: 6em;
+}
+.admin_profile {
+  margin-top: 5em;
+}
+
+.product_profile {
+  margin-top: 5em;
+}
+.col-sm-6 {
+  margin-bottom: 1em;
+}
+
+footer p {
+  margin: 0 1em;
+}
+header ul {
+  margin-right: 1.5em;
+}
+header img {
+  margin-left: 1.5em;
+}
+.selected,
+a:hover {
+  color: #f00;
+}
+
+/* NAVIGATION */
+
+header ul,
+footer ul {
+  list-style-type: none;
+  text-decoration: none;
+}
+
+nav a,
+header a {
+  text-decoration: none;
+}
+
+/* IMAGES */
+
+img {
+  width: 100%;
+}
+
+#home_button {
+  width: 10%;
+}
+.users img {
+  height: 15em;
+}
+.buyer_product_card img {
+  height: 15em;
+}
+
+/* RESPONSIVENESS */
+
+@media screen and (min-width: 42em) {
+  /* Page grid */
+
+  body {
+    display: grid;
+    grid-template-columns: 1fr 40rem 1fr;
+  }
+
+  header,
+  nav,
+  footer {
+    grid-column: 1 / 4;
+  }
+
+  main,
+  aside {
+    grid-column: 2;
+  }
+
+  /* Flexboxes */
+
+  aside {
+    display: flex;
+    justify-content: center;
+  }
+
+  .news_topic {
+    margin-top: 1em;
+  }
+  .news_topic > h2 {
+    margin-bottom: 1em;
+  }
+
+  footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    z-index: 9999;
+  }
+
+  aside > div {
+    /* Make the flexed divs a bit less than 50% wide, so that
+           there can be some space between them (via justify-content
+           on the parent flexbox. */
+    width: 48%;
+  }
+
+  footer ul {
+    display: flex;
+    justify-content: center;
+  }
+
+  /* Margins and padding */
+
+  nav li {
+    /* Push the menu items apart with right and left margins. */
+    margin: 0 1em;
+  }
+
+  footer li {
+    margin: 0 1em;
+  }
+  footer {
+    margin-top: 2em;
+  }
+}
+
+@media screen and (min-width: 62em) {
+  /* Page grid */
+
+  body {
+    /* Two fixed-width central columns, with flexible space on either side. */
+    grid-template-columns: 1fr 30rem 40rem 1fr;
+  }
+
+  header,
+  nav,
+  footer {
+    grid-column: 1 / 5;
+  }
+
+  main {
+    grid-column: 3;
+  }
+
+  aside {
+    grid-column: 2;
+  }
+
+  .news_topic {
+    margin-top: 1em;
+  }
+
+  /* Other layout */
+
+  aside {
+    /* We don't want this to be a flexbox anymore, so change it back to a block,
+           which is its default. */
+    display: block;
+  }
+
+  aside > div {
+    /* These need to be the full width of the aside again. We set them to
+           48% in the flexbox above, so override that here. */
+    width: 80%;
+  }
+
+  aside,
+  main {
+    margin-bottom: 3em;
+  }
+  main {
+    margin-top: 5em;
+  }
+  main > p {
+    margin-top: 1em;
+  }
+}
