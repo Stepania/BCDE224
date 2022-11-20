@@ -1,42 +1,45 @@
 <?php
 require_once 'lib/abstractView.php';
-class allListingsView extends AbstractView {
+class AllListingsView extends AbstractView {
 
 	public function prepare () {
+    echo("SDfvsdfvsdvsdfv");
         $model = $this->getModel();
-        $listings = $model->getListings();
+        $products = $model->getListings();
         $role = $model->getRole();
+       // print_r($products);
         $content = 
-        '<div class="d-flex justify-content-start flex-wrap">
-            <div class="d-flex">
-                <button type="button" class="btn btnColour rounded-end">
-                    <i class="fas fa-search"></i>
-                </button>
-            </div>';
+        '';
         if ($role == 'Seller'){
           include_once 'public/newListingButton.php';
-        }           
+        }        
+     // zdes   
         $content.='</div>
-        <div class="mt-2 listingsContainer">';
-        if ($listings != null){
-          foreach ($listings as $listing) {
-            echo("imsending");
+        <div class="buyer_product_card">';
+        if ($products != null){
+          foreach ($products as $product) {
+
+            // echo("imsending");
             $content.= 
-            '<a href="##site##/user.php/singleListing/'.$listing->getID().'">
-              <div class="listingCard  rounded-2 border m-1">
-                <h2 class="listingName p-2 rounded-top">'.$listing->getProductName().'</h2>
+            '<a href="##site##/user.php/singleproduct/'.$product->getID().'">
+            
+              <div class="productCard  rounded-2 border m-1">
+                <h2 class="productName p-3 rounded-top">'.$product->getProductName().'</h2>
                 <div class="m-1 d-flex">
-                  <img src="##site##images/'.$listing->getProductPicture().'" class="listImage m-2" alt="'.$listing->getProductName().'">
+                  <img src="##site##images/'.$product->getProductPicture().'" class="listImage m-2" alt="'.$product->getProductName().'">
                   <div class="m-1">
-                  <p>Price: '.$listing->getPrice().'</p>
-                  <p>Seller: '.$listing->getSellerName().'</p>
+                  <p>Price: '.$product->getPrice().'</p>
+                  <p>Seller: '.$product->getSellerName().'</p>
           
-                  <span class="listingAge">Listed '.$listing->getListingDate().'</span>
+                  <span class="productAge">Listed '.$product->getListingDate().'</span>
                 </div>
                 </div>
-              </div>
+              
             </a>';
         }
+       // echo("Fff");
+        // print_r($product->getPrice());
+        // print_r($product->getSellerName());
       }
         $content.='</div>';
         

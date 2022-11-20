@@ -33,7 +33,7 @@ class EditUserView extends AbstractView {
             <label for="confirmPassword" class="form-label">Confirm Password</label>
             <input type="password" class="form-control" ="confirmPassword" value="'.$model->getPassword().'">
           </div>
-          <button type="submit" class="btn btnColour">Submit</button> 
+          <button type="submit" class="btn btn-primary">Submit</button> 
           </form>';
           
           include_once 'public/signOut.php';

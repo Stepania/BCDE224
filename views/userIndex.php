@@ -8,10 +8,12 @@ class UserIndexView extends AbstractView {
         include_once 'public/homeContent.php';
         include 'public/defineRole.php';
         include_once 'public/signOut.php';
+        include_once 'public/checkProduct.php';
 
         
         
       $this->setTemplateField('nav', $nav);
+      $this->setTemplateField('list', $list);
       $this->setTemplateField('login', $login);
       $this->setTemplateField('content',$content);
       $this->setTemplateField('pagename', 'Home');

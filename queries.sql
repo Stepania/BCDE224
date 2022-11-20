@@ -43,4 +43,12 @@ END;
 
 -- need to create view for products!
 
-
+-- 4. Create a view of products
+create or replace view allProductSeller as
+select  p.productID,p.sellerID,p.productName, p.listingDate, p.productPicture,p.price,CONCAT(au.firstName, ' ', au.lastName) AS sellerName,p.productDescription
+from product p inner join agorauser au on p.sellerID=au.userID
+inner join business b on au.businessID=b.businessID
+group by b.businessID;
+-- select* from allProductSeller
+where sellerID=7;
+-- insert into product(productName,price,productDescription,productPicture,sellerID,listingDate)

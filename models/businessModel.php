@@ -89,13 +89,10 @@ class BusinessModel extends AbstractModel {
             $this->bankAccount=$row['bankAccount'];
             $this->companyLogo=$row['companyLogo'];
             $this->address=$row['address'];
-            $this->changed=false;
-        
-		
+            $this->changed=false;       	
 	}
 	
-	public function save() {
-        
+	public function save() {        
 		$id=$this->businessID;        
 		$name=$this->name;
         $adres=$this->address;

@@ -37,10 +37,7 @@ class AdminUsersView extends AbstractView {
                   <div class="m-1 px-2">
                     <p>Address<p>
                     <h5>'.$user->getAddress().'</h5>     
-                  </div>     
-
-
-                  
+                  </div>                       
                       <div class="m-1 d-flex">     
                         <a class="mt-3 href="##site##user.php/editUser/'.$user->getID().'"><button class="btn btnColour m-1">Edit Profile</button></a>
                         <a class="mt-3 href="##site##user.php/deleteUser/'.$user->getID().'"><button class="btn btnColour m-1">Delete</button></a>                                                       

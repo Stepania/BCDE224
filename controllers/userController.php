@@ -132,15 +132,17 @@ class UserController extends AbstractController {
                 // echo($companyID);
                 $view = new ListingFormView();
                 $view->setTemplate('html/form.html');
+                echo("SDfvsdfvsdvsdfv");
                 
-               
                 if($_SERVER['REQUEST_METHOD'] == 'POST') {  
+                    // echo("tut");
                     $photo = $this->addImgFile();                    
                     $model->editListing($db, null,
                     $_POST["productName"], 
                     $_POST["productDescription"],
                     $_POST["price"],
                     $photo); 
+                    
 
                     
                  $this->redirect_to('/agora/user.php/allListings/' . $model->getID().'');          
@@ -223,9 +225,9 @@ class UserController extends AbstractController {
                 include_once 'lib/initModel.php';      
                 include_once 'views/singleListing.php'; 
                 
-                echo("im in usercomtroller220");      
+                //echo("im in usercomtroller220");      
                 
-                // not getting any ID for some reason, go to uri
+                // not getting any ID for some reason, go to
                 $listingID = $uri->getID();                   
                 $view = new SingleListingView();
                 $view->setTemplate('html/masterPage.html');

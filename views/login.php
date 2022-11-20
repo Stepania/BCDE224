@@ -12,10 +12,9 @@ class LoginView extends AbstractView {
             </div>
             <div class="mb-3">
               <label for="password" class="form-label">Password</label>
-              <input type="password" class="form-control" id="password" name="password" required>
-              <a class="form-text"href="placeholder.html">Forgot Password?...</a>
+              <input type="password" class="form-control" id="password" name="password" required>              
             </div>
-            <button type="submit" class="button" class="btn btn-primary">Sign in</button> 
+            <button type="submit"  class="btn btn-primary">Sign in</button> 
         
           </form>';
           include_once 'public/signUp.php';

@@ -46,6 +46,6 @@ $content='<h1>Sign Up</h1>
       <input type="password" class="form-control" name="confirmPassword" value="'.$value.'" required>
     </div>
     <button type="submit" class="btn btnColour" >Submit</button> 
-    <a class="form-text"href="##site##user.php/login">Already have an account?... Sign in</a>
+    <a class="form-text"href="##site##user.php/login"></a>
   </form>';
 ?>

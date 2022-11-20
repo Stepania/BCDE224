@@ -37,7 +37,7 @@ class URI {
 	// same as get part, but ensure we're getting a numeric ID
 
 
-
+	// for some reason that one is not working 
 
 	public function getID() {
 		//echo("im not getting it ");

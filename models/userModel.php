@@ -192,7 +192,7 @@ class UserModel extends AbstractModel {
         $this->password=$row['userPassword'];
         $this->changed=false;	
     }
-	//needs work on update - Check
+
 	public function save() {        
 		$id=$this->userID;
         $username=$this->userName;
@@ -227,8 +227,8 @@ class UserModel extends AbstractModel {
 	}
 	//needs work
 	public function delete ($id) {
-        $sql ="delete from listing where sellerID = '$id'";       
-		//$rows=$this->getDB()->execute($sql);
+        $sql ="delete from product where sellerID = '$id'";       
+		$rows=$this->getDB()->execute($sql);
         $sql = "delete from agoraUser where userID = '$id'";
         $this->getDB()->execute($sql);
 		$this->changed=false;
@@ -256,26 +256,27 @@ class UserModel extends AbstractModel {
     // Listings
     public function loadListings($word){
         switch($this->role){
-            case 'admin':
+            case 'Admin':
                 $sql = "call sp_showProduct(".$this->businessID.")";
                 //$sql = "call sp_showAllProducts()";
-                echo("need admin");
+                echo("I am admin");
             break;
             case 'Seller':
-                $sql = "call sp_showProduct(".$this->businessID.")";               
+                $sql = "call sp_showProduct(".$this->businessID.")";
+                //$sql = "SELECT * FROM allproductseller where sellerID='.$this->businessID.' " ;              
                 //$sql = "call sp_showAllProducts()";
-                echo("need seller");
+                echo("I am seller");
             break;
             case 'Buyer':
-                $sql = "call sp_showProduct(".$this->businessID.")";
-                //$sql = "call sp_showAllProducts()";
+                // $sql = "call sp_showProduct(".$this->businessID.")";
+                $sql = "call sp_showAllProducts()";
                 //$sql = "select * from agorauser where username='drenders'";
-                echo("need Buyer");              
-                
+                echo("I am Buyer");             
                 
             break;
         }
         $rows=$this->getDB()->query($sql);
+      
         if (count($rows)!==0) {
         foreach ($rows as $row){
             $productID=$row['productID'];
@@ -285,15 +286,17 @@ class UserModel extends AbstractModel {
             $price=$row['price'];
             $listingDate=$row['listingDate'];
             $sellerID=$row['sellerID'];
-            $sellerName=$row['sellerName'];
-        $listing = new ListingModel($this->getDB(),$productID,$productName,$productDescription,$photo,$price,$listingDate,$sellerID,$sellerName);
+            $sellerName=$row['sellerName'];            
+            $listing = new ListingModel($this->getDB(),$productID,$productName,$productDescription,$photo,$price,$listingDate,$sellerID,$sellerName);
+           //print_r($sellerName);
             $this->listings[]=$listing;
         }
     }
     }
     public function editListing($db, $id, $productName, $productDescription, $price, $photo){
         $listing = new ListingModel($db, $id, $productName, $productDescription, $photo, 
-        $price, null, $this->userID, null, null);
+        $price, null, $this->userID, null);
+        
         $listing->save();
         
     }
@@ -302,7 +305,7 @@ class UserModel extends AbstractModel {
     }
     // load and get single listing
     public function loadListingByID($db, $id){
-        caller();
+       
         $theListing = new ListingModel($db);
         
         $theListing->load($id);

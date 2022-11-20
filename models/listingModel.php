@@ -12,8 +12,7 @@ class ListingModel extends AbstractModel {
     private $businessLogo;
     private $changed;
     
-    public function __construct($db, $id=null, $productName=null, $productDescription=null, $photo=null, $price=null, $listingDate=null, 
-    $hashTag=null, $sellerID=null, $sellerContact=null, $sellerName=null) {
+    public function __construct($db, $id=null, $productName=null, $productDescription=null, $photo=null, $price=null, $listingDate=null, $sellerID=null, $sellerName=null) {
 		parent::__construct($db);
         $this->productID=$id;
 		$this->setproductName($productName);
@@ -28,7 +27,7 @@ class ListingModel extends AbstractModel {
 	//getters
 	public function getID() {
 		return $this->productID;
-        echo("xbxcvbxcb");
+        //echo("xbxcvbxcb");
 	}
 	
 	public function getproductName() {
@@ -108,7 +107,7 @@ class ListingModel extends AbstractModel {
         $sql="CALL sp_showProduct('$id')";
         $rows=$this->getDB()->query($sql);
         if (count($rows)==0) {
-            throw new Exception("listing id $id not found");
+            throw new Exception("product id $id not found");
         }
         $row=$rows[0];
         $this->productName=$row['productName'];
@@ -121,8 +120,10 @@ class ListingModel extends AbstractModel {
         $this->businessLogo=$row['companyLogo'];
         $this->changed=false;		
 	}
+
     
 	public function save() {
+        echo("saving");
 		$id=$this->productID;
 		$name=$this->productName;
 		$descrip=$this->productDescription;
@@ -130,7 +131,7 @@ class ListingModel extends AbstractModel {
         $price=$this->price;
         $sellID=$this->sellerID;
         $date = $this->listingDate;
-
+        
 		
 		if ($id === null) {
             
@@ -138,7 +139,7 @@ class ListingModel extends AbstractModel {
             price, listingDate, sellerID) 
             values ("."'$name', '$descrip', '$photo', '$price', now(), '$sellID');";
 			$this->getDB()->execute($sql);
-            echo("dsvdd");
+            //echo("dsvdd");
 			$this->productID=$this->getDB()->getInsertID();	
 		} else {
 
@@ -162,10 +163,5 @@ class ListingModel extends AbstractModel {
 		$this->id=null;
 		$this->changed=false;
 	}
-
-
-
-
-
 }
 ?>
